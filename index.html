@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Retífica Remobrag — Laboratório de restauração de motores com precisão de 0.01mm. Diagnóstico metrológico, usinagem CNC e montagem homologada. Tradição e tecnologia desde 1993." />
+  <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Remobrag - Retífica de Motores">
+    <meta property="og:description" content="Especialistas em restauração de motores com precisão e tecnologia.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://seusite.com/imagem.jpg">
+  
+  <title>Remobrag - Retífica de Motores</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --carbon: #0D0E10;
+      --panel: #131518;
+      --orange: #FF5A00;
+      --steel: #F3F4F6;
+      --silver: #9CA3AF;
+      --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+      --font-mono: 'Space Mono', ui-monospace, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-heading);
+      background: var(--carbon);
+      color: var(--steel);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--orange); color: var(--carbon); }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .mono { font-family: var(--font-mono); }
+
+    .container { max-width: 120rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ===== NAVBAR ===== */
+    nav.navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 50;
+      background: rgba(13,14,16,0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(243,244,246,0.1);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 5rem;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-dot { width: 0.5rem; height: 0.5rem; background: var(--orange); border-radius: 50%; animation: pulse 2s infinite; }
+    .nav-brand .name { font-weight: 700; font-size: 0.875rem; letter-spacing: -0.02em; color: var(--steel); }
+    .nav-brand .sub { color: var(--silver); font-family: var(--font-mono); font-size: 0.75rem; }
+    .nav-meta { display: none; gap: 2rem; color: var(--silver); font-family: var(--font-mono); font-size: 0.75rem; }
+    @media (min-width: 1024px) { .nav-meta { display: flex; } }
+
+    .btn-outline {
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      padding: 0 1.5rem; height: 2.5rem; overflow: hidden;
+      border: 1px solid var(--orange); background: transparent; color: var(--orange);
+      transition: color 0.3s; font-family: var(--font-mono); font-weight: 700;
+      letter-spacing: 0.1em; font-size: 10px; cursor: pointer;
+    }
+    .btn-outline::before {
+      content: ''; position: absolute; inset: 0; background: var(--orange);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .btn-outline:hover { color: var(--carbon); }
+    .btn-outline:hover::before { transform: scaleX(1); }
+    .btn-outline span { position: relative; z-index: 1; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 100vh; padding-top: 5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      border-bottom: 1px solid rgba(243,244,246,0.1);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-grid > div { border-right: 1px solid rgba(243,244,246,0.05); height: 100%; }
+    .hero-grid > div:last-child { border-right: none; }
+    .hero-grid > div:nth-child(3) { display: none; }
+    @media (min-width: 768px) { .hero-grid > div:nth-child(3) { display: block; } }
+
+    .hero-title-wrap { position: relative; z-index: 1; padding: 4rem 0 0; }
+    @media (min-width: 768px) { .hero-title-wrap { padding-top: 6rem; } }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--orange);
+      letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 12vw; font-weight: 900; text-transform: uppercase;
+      line-height: 0.85; letter-spacing: -0.04em;
+      background: linear-gradient(to bottom, var(--steel), var(--silver));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    @media (min-width: 768px) { .hero-title { font-size: 8.5vw; } }
+    .hero-title .accent { color: var(--orange); -webkit-text-fill-color: var(--orange); }
+
+    .hero-specs {
+      position: relative; z-index: 1; padding: 2rem 1.5rem;
+      border-top: 1px solid rgba(243,244,246,0.1);
+      border-bottom: 1px solid rgba(243,244,246,0.1);
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.75rem;
+    }
+    @media (min-width: 768px) { .hero-specs { grid-template-columns: repeat(4, 1fr); max-width: 120rem; margin: 0 auto; width: 100%; } }
+    .hero-specs .desc { color: var(--silver); line-height: 1.6; max-width: 36rem; }
+    @media (min-width: 768px) { .hero-specs .desc { grid-column: span 2; } }
+    .hero-specs .label-orange { color: var(--orange); }
+    .hero-specs .label-silver { color: var(--silver); }
+    .hero-specs .cta-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; color: var(--steel);
+      transition: color 0.3s;
+    }
+    .hero-specs .cta-link:hover { color: var(--orange); }
+    .hero-specs .cta-link .arrow { transition: transform 0.3s; }
+    .hero-specs .cta-link:hover .arrow { transform: translateX(0.5rem); }
+    .hero-specs .cta-link-wrap { display: flex; align-items: center; }
+    @media (min-width: 768px) { .hero-specs .cta-link-wrap { justify-content: flex-end; } }
+
+    .hero-media { position: relative; width: 100%; height: 45vh; overflow: hidden; z-index: 1; }
+    @media (min-width: 768px) { .hero-media { height: 50vh; } }
+    .hero-media .overlay { position: absolute; inset: 0; background: rgba(13,14,16,0.4); z-index: 1; mix-blend-mode: multiply; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(0.75); }
+    .hero-media .cam-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 2;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+      color: var(--silver); display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-media .rec-dot { width: 0.375rem; height: 0.375rem; background: #dc2626; border-radius: 50%; animation: ping 1.5s infinite; }
+
+    /* ===== PROCESS ===== */
+    .process {
+      position: relative; max-width: 120rem; margin: 0 auto; padding: 6rem 1.5rem;
+      display: grid; grid-template-columns: 1fr; gap: 3rem;
+      border-bottom: 1px solid rgba(243,244,246,0.1);
+    }
+    @media (min-width: 1024px) { .process { grid-template-columns: repeat(12, 1fr); padding: 8rem 1.5rem; } }
+    .process-left { }
+    @media (min-width: 1024px) { .process-left { grid-column: span 5; position: sticky; top: 8rem; height: fit-content; } }
+    .process-eyebrow { font-family: var(--font-mono); font-size: 0.75rem; color: var(--orange); letter-spacing: 0.3em; text-transform: uppercase; }
+    .process-title { font-size: 2.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 1; margin-top: 2rem; }
+    @media (min-width: 768px) { .process-title { font-size: 3.75rem; } }
+    .process-desc { color: var(--silver); max-width: 28rem; margin-top: 2rem; line-height: 1.6; }
+    .process-metric { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(243,244,246,0.1); }
+    .process-metric .num { font-family: var(--font-mono); font-size: 3.75rem; font-weight: 700; color: var(--orange); letter-spacing: -0.04em; }
+    @media (min-width: 768px) { .process-metric .num { font-size: 5rem; } }
+    .process-metric .num .unit { font-size: 1.25rem; color: var(--steel); }
+    .process-metric .caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--silver); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; }
+
+    .process-right { display: flex; flex-direction: column; gap: 3rem; }
+    @media (min-width: 1024px) { .process-right { grid-column: span 7; } }
+
+    .step-card {
+      padding: 2rem; background: var(--panel); border: 1px solid rgba(243,244,246,0.1);
+      transition: border-color 0.3s;
+    }
+    .step-card:hover { border-color: rgba(255,90,0,0.5); }
+    .step-head { display: flex; justify-content: space-between; align-items: flex-start; font-family: var(--font-mono); margin-bottom: 1.5rem; }
+    .step-num { color: var(--orange); font-size: 1.125rem; font-weight: 700; }
+    .step-phase { font-size: 0.75rem; color: var(--silver); }
+    .step-title { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; transition: color 0.3s; }
+    .step-card:hover .step-title { color: var(--orange); }
+    .step-text { color: var(--silver); font-size: 0.875rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .step-img-wrap { aspect-ratio: 16/9; width: 100%; background: var(--carbon); border: 1px solid rgba(243,244,246,0.05); overflow: hidden; }
+    .step-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.9); transition: transform 0.5s; }
+    .step-card:hover .step-img-wrap img { transform: scale(1.05); }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio {
+      background: var(--panel); border-bottom: 1px solid rgba(243,244,246,0.1);
+      padding: 6rem 0; overflow: hidden;
+    }
+    @media (min-width: 768px) { .portfolio { padding: 8rem 0; } }
+    .portfolio-head { max-width: 120rem; margin: 0 auto 4rem; padding: 0 1.5rem; }
+    .portfolio-head-top { display: flex; flex-direction: column; gap: 1.5rem; }
+    @media (min-width: 768px) { .portfolio-head-top { flex-direction: row; align-items: flex-end; justify-content: space-between; } }
+    .portfolio-title { font-size: 2.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; margin-top: 1rem; }
+    @media (min-width: 768px) { .portfolio-title { font-size: 4.5rem; } }
+    .portfolio-desc { font-family: var(--font-mono); font-size: 0.75rem; color: var(--silver); max-width: 28rem; }
+    @media (min-width: 768px) { .portfolio-desc { text-align: right; } }
+
+    .portfolio-track {
+      display: flex; gap: 2rem; padding: 0 1.5rem 2rem;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+    }
+    .portfolio-track::-webkit-scrollbar { display: none; }
+    .portfolio-track { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .project-card {
+      flex: 0 0 85vw; scroll-snap-align: start; background: var(--carbon);
+      border: 1px solid rgba(243,244,246,0.1); padding: 1.5rem;
+    }
+    @media (min-width: 768px) { .project-card { flex: 0 0 35rem; } }
+    .project-img-wrap { aspect-ratio: 4/5; width: 100%; background: var(--panel); overflow: hidden; position: relative; }
+    .project-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: transform 0.7s; }
+    .project-card:hover .project-img-wrap img { transform: scale(1.05); }
+    .project-tag { position: absolute; top: 1rem; left: 1rem; background: var(--orange); color: var(--carbon); font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 0.25rem 0.75rem; }
+    .project-info { margin-top: 1.5rem; }
+    .project-row { display: flex; justify-content: space-between; align-items: baseline; }
+    .project-name { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
+    .project-spec { font-family: var(--font-mono); font-size: 0.75rem; color: var(--silver); }
+    .project-desc { font-size: 0.875rem; color: var(--silver); font-family: var(--font-mono); margin-top: 0.5rem; }
+
+    /* ===== CREDIBILITY ===== */
+    .credibility {
+      max-width: 120rem; margin: 0 auto; padding: 6rem 1.5rem;
+      display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;
+      border-bottom: 1px solid rgba(243,244,246,0.1);
+    }
+    @media (min-width: 1024px) { .credibility { grid-template-columns: repeat(2, 1fr); padding: 8rem 1.5rem; } }
+    .cred-img-wrap { position: relative; aspect-ratio: 1; background: var(--panel); border: 1px solid rgba(243,244,246,0.1); overflow: hidden; }
+    @media (min-width: 768px) { .cred-img-wrap { aspect-ratio: 4/3; } }
+    @media (min-width: 1024px) { .cred-img-wrap { aspect-ratio: 1; } }
+    .cred-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(0.9); }
+    .cred-badge {
+      position: absolute; bottom: -2.5rem; right: -2.5rem; width: 11rem; height: 11rem;
+      background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      padding: 0.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.5); transition: transform 0.3s;
+    }
+    .cred-img-wrap:hover .cred-badge { transform: scale(1.05); }
+    .cred-badge svg { width: 100%; height: 100%; animation: spin 20s linear infinite; }
+    .cred-badge .years { position: absolute; font-size: 1.25rem; font-weight: 900; color: var(--carbon); font-family: var(--font-mono); }
+    .cred-content { }
+    .cred-title { font-size: 2.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 1; margin-top: 2rem; }
+    @media (min-width: 768px) { .cred-title { font-size: 3rem; } }
+    .cred-desc { color: var(--silver); line-height: 1.7; margin-top: 2rem; }
+    .cred-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(243,244,246,0.1); font-family: var(--font-mono); }
+    .cred-grid .val { display: block; font-size: 1.5rem; font-weight: 700; color: var(--steel); }
+    .cred-grid .lbl { font-size: 0.75rem; color: var(--silver); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ===== SOCIAL PROOF ===== */
+    .social-proof { max-width: 120rem; margin: 0 auto; padding: 6rem 1.5rem; border-bottom: 1px solid rgba(243,244,246,0.1); }
+    @media (min-width: 768px) { .social-proof { padding: 8rem 1.5rem; } }
+    .sp-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 1024px) { .sp-grid { grid-template-columns: repeat(3, 1fr); } }
+    .sp-col { }
+    .sp-card { background: var(--panel); padding: 2rem; border: 1px solid rgba(243,244,246,0.1); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; height: 100%; }
+    .sp-title { font-size: 1.875rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; margin-top: 1.5rem; }
+    .sp-desc { color: var(--silver); font-size: 0.875rem; line-height: 1.7; margin-top: 1.5rem; }
+    .sp-fb-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem;
+      background: var(--panel); border: 1px solid rgba(243,244,246,0.1);
+      font-size: 0.875rem; font-family: var(--font-mono); letter-spacing: 0.05em;
+      transition: border-color 0.3s; margin-top: 1rem;
+    }
+    .sp-fb-btn:hover { border-color: var(--orange); }
+    .sp-fb-btn svg { width: 1rem; height: 1rem; fill: var(--orange); }
+    .sp-stars { display: flex; gap: 0.25rem; }
+    .sp-stars span { color: var(--orange); font-size: 1.125rem; }
+    .sp-quote { font-size: 0.875rem; font-style: italic; color: var(--silver); line-height: 1.7; margin-top: 1rem; }
+    .sp-author { font-family: var(--font-mono); font-size: 0.75rem; }
+    .sp-author .name { display: block; font-weight: 700; color: var(--steel); }
+    .sp-author .loc { color: var(--silver); }
+    .sp-loc-title { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-top: 1rem; }
+    .sp-loc-info { font-family: var(--font-mono); font-size: 0.75rem; gap: 0.5rem; display: flex; flex-direction: column; border-top: 1px solid rgba(243,244,246,0.1); padding-top: 1rem; color: var(--silver); }
+    .sp-loc-info .brand { font-weight: 700; color: var(--steel); }
+
+    /* ===== CTA ===== */
+    .cta {
+      position: relative; max-width: 120rem; margin: 0 auto; padding: 8rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+    }
+    @media (min-width: 768px) { .cta { padding: 12rem 1.5rem; } }
+    .cta-bg { position: absolute; inset: 0; opacity: 0.03; pointer-events: none; display: flex; align-items: center; justify-content: center; z-index: 0; }
+    .cta-bg svg { width: 150%; height: 150%; stroke: var(--steel); fill: none; }
+    .cta-content { position: relative; z-index: 1; max-width: 48rem; margin: 0 auto; }
+    .cta-eyebrow { font-family: var(--font-mono); font-size: 0.75rem; color: var(--orange); letter-spacing: 0.4em; text-transform: uppercase; }
+    .cta-title { font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 1; margin-top: 2rem; }
+    @media (min-width: 768px) { .cta-title { font-size: 5rem; } }
+    .cta-title .accent { color: var(--orange); }
+    .cta-desc { color: var(--silver); font-size: 1rem; max-width: 36rem; margin: 2rem auto 0; line-height: 1.7; }
+    @media (min-width: 768px) { .cta-desc { font-size: 1.125rem; } }
+    .cta-buttons { padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; }
+    @media (min-width: 640px) { .cta-buttons { flex-direction: row; } }
+    .btn-primary {
+      width: 100%; padding: 1.25rem 2.5rem; background: var(--orange); color: var(--carbon);
+      font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em;
+      transition: background 0.3s, color 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      cursor: pointer; animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    @media (min-width: 640px) { .btn-primary { width: auto; } }
+    .btn-primary:hover { background: var(--steel); color: var(--carbon); }
+    .btn-ghost {
+      width: 100%; padding: 1.25rem 2.5rem; background: transparent; border: 1px solid rgba(243,244,246,0.2);
+      color: var(--steel); font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em;
+      transition: border-color 0.3s; cursor: pointer;
+    }
+    @media (min-width: 640px) { .btn-ghost { width: auto; } }
+    .btn-ghost:hover { border-color: var(--orange); }
+
+    /* ===== FOOTER ===== */
+    footer.footer { border-top: 1px solid rgba(243,244,246,0.1); background: var(--carbon); padding: 3rem 0; }
+    .footer-grid { max-width: 120rem; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--silver); }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+    .footer-brand { color: var(--steel); font-weight: 700; letter-spacing: 0.1em; font-size: 0.875rem; text-transform: uppercase; }
+    .footer-copy { margin-top: 0.5rem; font-size: 10px; letter-spacing: 0.05em; color: rgba(156,163,175,0.6); }
+    .footer-mid { display: flex; flex-direction: column; gap: 0.25rem; font-size: 10px; }
+    @media (min-width: 768px) { .footer-mid { align-items: center; } }
+    .footer-mid .l1 { color: rgba(243,244,246,0.8); }
+    .footer-mid .l2 { color: var(--orange); }
+    .footer-right { font-size: 10px; color: rgba(156,163,175,0.6); display: flex; flex-direction: column; gap: 0.25rem; }
+    @media (min-width: 768px) { .footer-right { text-align: right; } }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes ping { 0% { transform: scale(1); opacity: 1; } 75%, 100% { transform: scale(2); opacity: 0; } }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,90,0,0.4); }
+      50% { box-shadow: 0 0 30px 4px rgba(255,90,0,0.6); }
+    }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="nav-brand">
+        <span class="nav-dot"></span>
+        <span class="name">REMOBRAG</span>
+        <span class="sub" style="display:none;" data-md-show>| RETÍFICA DE MOTORES LTDA.</span>
+      </div>
+      <div class="nav-meta">
+        <!-- <span>SYS.STATUS: ACTIVE</span>
+        <span>TOLERANCE: 0.01MM</span>
+        <span>EST. 1993</span> -->
+      </div>
+      <a href="https://wa.me/5541996866872?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20ret%C3%ADfica%20do%20meu%20motor." target="_blank" rel="noopener" class="btn-outline">
+        <span>ORÇAMENTO / WHATSAPP</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div></div><div></div><div></div><div></div>
+    </div>
+
+    <div class="container hero-title-wrap">
+      <p class="hero-eyebrow">// RESTAURANDO A FORÇA ORIGINAL</p>
+      <h1 class="hero-title">
+        RETÍFICA<br>
+        <span class="accent">DE MOTORES</span>
+      </h1>
+    </div>
+
+    <div class="hero-specs">
+      <div class="desc">
+        Diagnóstico computadorizado, usinagem microscópica e montagem sob especificações originais de fábrica. Nós não apenas consertamos motores; nós restauramos sua integridade mecânica com tolerância zero a falhas.
+      </div>
+      <div>
+        <span class="label-orange">PROCESSO HOMOLOGADO</span><br>
+        <span class="label-silver">ISO 9001 &amp; Padrões OEM</span>
+      </div>
+      <div class="cta-link-wrap">
+        <a href="#portfolio" class="cta-link">
+          <span>VER PROJETOS RECENTES</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <div class="overlay"></div>
+      <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/4d0f7b431_generated_f81fc413.png" alt="Bloco de motor industrial sendo içado na retífica Remobrag">
+      <div class="cam-badge">
+        <span>CAM: CNC_LATHE_04</span>
+        <span class="rec-dot"></span>
+        <span>REC LIVE FEED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-left reveal">
+      <span class="process-eyebrow">// ENGENHARIA DE PRECISÃO</span>
+      <h2 class="process-title">ONDE CADA<br>MILÍMETRO<br>DECIDE O PODER.</h2>
+      <p class="process-desc">
+        Motores modernos exigem precisão cirúrgica. Nossa oficina é equipada com maquinário de última geração para garantir que o brunimento, plaina e retificação de virabrequins sigam estritamente o manual do fabricante.
+      </p>
+      <div class="process-metric">
+        <div class="num">0.01<span class="unit">mm</span></div>
+        <p class="caption">Margem máxima de tolerância em nossa usinagem</p>
+      </div>
+    </div>
+
+    <div class="process-right">
+      <!-- Step 1 -->
+      <div class="step-card reveal">
+        <div class="step-head">
+          <span class="step-num">01 / DIAGNÓSTICO METROLÓGICO</span>
+          <span class="step-phase">FASE DE ENTRADA</span>
+        </div>
+        <h3 class="step-title">Desmontagem e Análise Química</h3>
+        <p class="step-text">O motor é completamente desmontado e passa por banho químico térmico para remoção de carbonização. Em seguida, medimos o desgaste de cilindros, folgas de bronzinas e empenamento de cabeçote com micrômetros calibrados.</p>
+        <div class="step-img-wrap">
+          <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/c5ae7d369_generated_2d817f3d.png" alt="Medição de alta precisão com micrômetro digital em bloco de motor">
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card reveal">
+        <div class="step-head">
+          <span class="step-num">02 / USINAGEM PESADA CNC</span>
+          <span class="step-phase">FASE DE EXECUÇÃO</span>
+        </div>
+        <h3 class="step-title">Retificação de Bloco, Virabrequim e Cabeçote</h3>
+        <p class="step-text">Usinagem dos cilindros (mandrilhamento e brunimento), retificação das sedes de válvulas e faceamento do cabeçote. Cada etapa é executada por operadores especializados em máquinas de alta rigidez estrutural.</p>
+        <div class="step-img-wrap">
+          <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/ca87fddb1_generated_1a5e7783.png" alt="Plaina de cabeçote em ação na retificadora CNC">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card reveal">
+        <div class="step-head">
+          <span class="step-num">03 / MONTAGEM &amp; DINAMÔMETRO</span>
+          <span class="step-phase">FASE DE HOMOLOGAÇÃO</span>
+        </div>
+        <h3 class="step-title">Montagem Técnica e Teste de Estanqueidade</h3>
+        <p class="step-text">Montagem com torquímetros digitais homologados, substituição de juntas, retentores e bronzinas por peças originais. O motor passa por teste de pressão hidráulica para garantir vedação absoluta antes da entrega.</p>
+        <div class="step-img-wrap">
+          <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/fa3734222_generated_26b8450f.png" alt="Motor V8 totalmente retificado e montado em cavalete de exposição">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-head">
+      <div class="portfolio-head-top">
+        <div class="reveal">
+          <span class="process-eyebrow">// NOSSO PORTFÓLIO DE RESTAURAÇÃO</span>
+          <h2 class="portfolio-title">MOTORES ENTREGUES</h2>
+        </div>
+        <p class="portfolio-desc reveal">
+          De motores de passeio a gigantes da linha diesel pesada e agrícola. Veja a precisão do acabamento final de quem é referência na região.
+        </p>
+      </div>
+    </div>
+
+    <div class="portfolio-track">
+      <div class="project-card reveal">
+        <div class="project-img-wrap">
+          <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/51ecd9cd8_generated_c81d2291.png" alt="Motor Diesel de alta cilindrada totalmente reconstruído pela Remobrag">
+          <div class="project-tag">LINHA DIESEL PESADA</div>
+        </div>
+        <div class="project-info">
+          <div class="project-row">
+            <h3 class="project-name">Scania DC13 Rebuild</h3>
+            <span class="project-spec">6 CILINDROS</span>
+          </div>
+          <p class="project-desc">Serviço: Retífica completa de bloco, virabrequim, alojamento de comando e camisas de cilindro.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img-wrap">
+          <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/44f7fca69_generated_f98441ac.png" alt="Motor de alta performance nacional retificado nos padrões OEM">
+          <div class="project-tag">LINHA LEVE &amp; PREMIUM</div>
+        </div>
+        <div class="project-info">
+          <div class="project-row">
+            <h3 class="project-name">EA888 2.0 TSI</h3>
+            <span class="project-spec">4 CILINDROS TURBO</span>
+          </div>
+          <p class="project-desc">Serviço: Brunimento plano-paralelo, troca de pistões forjados, assentamento de válvulas de alta precisão.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img-wrap">
+          <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/cb9878f4f_generated_195a45a7.png" alt="Motor agrícola John Deere retificado pela Remobrag">
+          <div class="project-tag">AGRO &amp; UTILITÁRIOS</div>
+        </div>
+        <div class="project-info">
+          <div class="project-row">
+            <h3 class="project-name">John Deere 6068</h3>
+            <span class="project-spec">6.8L AGRÍCOLA</span>
+          </div>
+          <p class="project-desc">Serviço: Plaina de bloco, embuchamento de biela, alinhamento de mancais e montagem completa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="credibility">
+    <div class="cred-img-wrap reveal">
+      <img src="https://media.base44.com/images/public/6a567819cb44a9aef37b770a/cb9878f4f_generated_195a45a7.png" alt="Instalações modernas da Retífica Remobrag, limpa e organizada">
+      <div class="cred-badge">
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+          </defs>
+          <text style="font-family: 'Space Mono', monospace; font-size: 7px; font-weight: 700; fill: #0D0E10; letter-spacing: 0.22em;">
+            <textPath href="#circlePath">RETÍFICA REMOBRAG • TRADIÇÃO E TECNOLOGIA •</textPath>
+          </text>
+        </svg>
+        <span class="years">30y</span>
+      </div>
+    </div>
+
+    <div class="cred-content reveal">
+      <span class="process-eyebrow">// CREDIBILIDADE COMPROVADA</span>
+      <h2 class="cred-title">POR QUE A REMOBRAG É A ESCOLHA DOS ESPECIALISTAS?</h2>
+      <p class="cred-desc">
+        Há três décadas, transformamos metal desgastado em potência pura. Atendemos concessionárias, frotistas de transporte e oficinas mecânicas parceiras que exigem garantia real e confiabilidade mecânica incontestável.
+      </p>
+      <div class="cred-grid">
+        <div><span class="val">+30 Anos</span><span class="lbl">De experiência de mercado</span></div>
+        <div><span class="val">100% Testado</span><span class="lbl">Testes de trinca e estanqueidade</span></div>
+        <div><span class="val">Garantia Real</span><span class="lbl">Suporte técnico pós-venda</span></div>
+        <div><span class="val">Maquinário Próprio</span><span class="lbl">Sem terceirização de etapas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof">
+    <div class="sp-grid">
+      <div class="sp-col reveal">
+        <span class="process-eyebrow">// NOSSA COMUNIDADE</span>
+        <h3 class="sp-title">SIGA NOSSO TRABALHO</h3>
+        <p class="sp-desc">
+          Mostramos o dia a dia da nossa oficina, processos de usinagem complexos e dicas técnicas diretamente em nossas redes sociais. Venha conferir a transparência da nossa equipe.
+        </p>
+        <a href="https://www.facebook.com/remobragretifica/" target="_blank" rel="noopener" class="sp-fb-btn">
+          <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+          <span>PÁGINA NO FACEBOOK</span>
+        </a>
+      </div>
+
+      <div class="sp-card reveal">
+        <div>
+          <div class="sp-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="sp-quote">
+            "Levei o cabeçote do meu carro que havia fervido. Fizeram o teste de trinca na hora, plainaram e o carro está perfeito. Atendimento extremamente técnico e honesto. Recomendo de olhos fechados."
+          </p>
+        </div>
+        <div class="sp-author">
+          <span class="name">Carlos R. Silva</span>
+          <span class="loc">Cliente Particular - São Paulo</span>
+        </div>
+      </div>
+
+      <div class="sp-card reveal">
+        <div>
+          <span class="process-eyebrow" style="letter-spacing:0.1em;">// ATENDIMENTO LOCAL</span>
+          <h4 class="sp-loc-title">VENHA CONHECER NOSSA ESTRUTURA</h4>
+          <p class="sp-desc">
+            Traga seu motor diretamente para avaliação técnica de nossos engenheiros e torne-se um parceiro de confiança.
+          </p>
+        </div>
+        <div class="sp-loc-info">
+          <p class="brand">REMOBRAG</p>
+          <p>R. Omilio Monteiro Soares, 846 - Fanny, Curitiba - PR</p>
+          <p>Segunda a Sexta: 08:00 às 12:00 e das 13:00 às 18:00</p>
+          <p>Sábado: 09:00 às 12:00 e das 13:00 às 17:00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-bg">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke-width="0.1"/>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#grid)"/>
+        <circle cx="50" cy="50" r="40" stroke-width="0.2"/>
+        <line x1="10" y1="50" x2="90" y2="50" stroke-width="0.2"/>
+        <line x1="50" y1="10" x2="50" y2="90" stroke-width="0.2"/>
+      </svg>
+    </div>
+    <div class="cta-content">
+      <span class="cta-eyebrow">// RESTAURAÇÃO DE ALTA PERFORMANCE</span>
+      <h2 class="cta-title">PRONTO PARA<br>FALAR COM UM<br><span class="accent">ESPECIALISTA?</span></h2>
+      <p class="cta-desc">
+        Envie os detalhes do seu motor ou veículo pelo WhatsApp. Nossa equipe técnica retornará rapidamente com uma pré-avaliação e orçamento detalhado.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/5541996866872?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20ret%C3%ADfica%20do%20meu%20motor." target="_blank" rel="noopener" class="btn-primary">
+          <span>INICIAR ORÇAMENTO RÁPIDO</span>
+          <span>→</span>
+        </a>
+        <a href="tel:+554132475193" class="btn-ghost">LIGAR AGORA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">REMOBRAG RETÍFICA</p>
+        <p class="footer-copy">© 2026 REMOBRAG. TODOS OS DIREITOS RESERVADOS.</p>
+      </div>
+      <div class="footer-mid">
+        <span class="l1">// CERTIFICAÇÃO TÉCNICA INTERNA</span>
+        <span class="l2">TOLERÂNCIA ZERO A FALHAS MECÂNICAS</span>
+      </div>
+      <div class="footer-right">
+        <p>CONCEITO INDUSTRIAL DE ALTA PRECISÃO</p>
+        <p>DESENVOLVIDO EM ALTA RESOLUÇÃO DE CÓDIGO</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Show subtitle on desktop
+    (function() {
+      var sub = document.querySelector('[data-md-show]');
+      function update() {
+        if (window.innerWidth >= 768) {
+          sub.style.display = 'inline';
+        } else {
+          sub.style.display = 'none';
+        }
+      }
+      update();
+      window.addEventListener('resize', update);
+    })();
+
+    // Reveal on scroll
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
